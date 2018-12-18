@@ -1,13 +1,21 @@
 #!/bin/bash
 echo 'this is upload_bashrc'
+
+git checkout master
+git checkout --patch upload_bashrc .bashrc
+git checkout updata
+
 cp ~/.bashrc .bashrc
 git diff .bashrc
 echo '提示：红色为master版本；绿色为本地版本'
 echo '更新master版本 yes <-->退出 no'
 read SELECT
 YES="yes"
+git checkout .
 if [ $SELECT = $YES ]
 then
+	git checkout master
+	cp ~/.bashrc .bashrc
 	git add .bashrc
 	git commit -m  "updata .bashrc:${time}"
 	# time=$(date "+%Y-%m-%d %H:%M:%S")
