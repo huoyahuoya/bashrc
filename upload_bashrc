@@ -3,7 +3,7 @@ echo 'this is upload_bashrc'
 
 git checkout master
 git checkout --patch upload_bashrc .bashrc
-git checkout updata
+git checkout upload_bashrc
 
 cp ~/.bashrc .bashrc
 git diff .bashrc
