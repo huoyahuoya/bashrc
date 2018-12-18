@@ -1,0 +1,16 @@
+#!/bin/bash
+echo 'this is download_bashrc'
+cp ~/.bashrc ./
+echo '以下是 本地版本 和 master版本 的差别'
+git diff .bashrc
+echo ''
+echo '下载yes<->退出no'
+YES="yes"
+read SELECT
+
+if [ $SELECT = $YES ]
+then
+    echo 'YES'
+else
+	echo 'NO'
+fi
