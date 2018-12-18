@@ -102,7 +102,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias adba='adb shell am start -n '
     alias adbp='adb shell pm list packages'
     alias repo_sync='repo forall -c "git clean -df" && repo forall -c "git checkout" && repo sync -j8'
-
+    alias
 fi
 
 # colored GCC warnings and errors
