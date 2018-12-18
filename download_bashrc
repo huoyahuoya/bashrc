@@ -4,13 +4,15 @@ cp ~/.bashrc ./
 echo '以下是 本地版本 和 master版本 的差别'
 git diff .bashrc
 echo ''
+echo '提示：红色为master版本；绿色为本地版本'
 echo '下载yes<->退出no'
 YES="yes"
 read SELECT
 
 if [ $SELECT = $YES ]
 then
-    echo 'YES'
+    git checkout .bashrc
+    cp .bashrc ~/.bashrc
 else
-	echo 'NO'
+	echo '退出'
 fi
