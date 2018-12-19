@@ -17,7 +17,7 @@ read SELECT
 if [ $SELECT = $YES ]
 then
     git checkout .bashrc
-    cp .bashrc ~/.bashrc
+    sudo cp .bashrc ~/.bashrc
 else
 	echo '退出'
 fi
