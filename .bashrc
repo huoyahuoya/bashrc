@@ -102,6 +102,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias adba='adb shell am start -n '
     alias adbp='adb shell pm list packages'
     alias repo_sync='repo forall -c "git clean -df" && repo forall -c "git checkout" && repo sync -j8'
+    alias fa='adb reboot bootloader && export ANDROID_PRODUCT_OUT=./ && fastboot flashall'
 
 fi
 
