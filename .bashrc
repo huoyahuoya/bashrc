@@ -168,7 +168,7 @@ function code_help {
 }
 
 
-function git_help {
+function git_help_branch {
 	echo    "$ git branch -a"
 	echo    "$ repo start Black_Monster2 --all origin/ZQL1818_INFINIX"
     echo    "$ git add .            （将当前目录下所有修改过的文件添加至索引库中）"
@@ -244,4 +244,41 @@ function github_help {
     git push -u origin master"
 
 
+}
+
+
+function git_help_log {
+	echo	"commit失败：
+	git reset --hard cd7814c8b0a14c4d346a128a9ac1558f43d129fb   返回某个节点
+	git pull --rebase   修改不变更新
+	git commit --amend
+
+	git stash
+	git stash pop
+
+	repo start gly --all master 创建分支
+	git status .
+	git diff Android.mk
+	git diff .
+	git add .
+	git commit -m \"[QL1818-1][BUG][Infinix][Settings][][] test\"
+	repo upload .
+	git checkout BASE
+	git branch -a
+	提交代码步骤
+	 git status .
+	git diff .
+	 git add .
+	git commit -m \"[QL1819-634][Infinix][BUG][Settings][][] clear defaults缺失左边框\"
+	repo upload .
+	去服务器填review人
+
+	git log
+	git log --pretty=oneline
+	git reset --hard 1094a(--hard干掉修改)
+	git clean -df
+	git reflog 记录你的每一次命令
+	git reset HEAD readme.txt  撤销add之后
+	git checkout -- file add之前还原文件
+	git reset HEAD^	回退到最新的上一笔"
 }
