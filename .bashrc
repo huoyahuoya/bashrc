@@ -103,6 +103,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias adbp='adb shell pm list packages'
     alias repo_sync='repo forall -c "git clean -df" && repo forall -c "git checkout" && repo sync -j8'
     alias fa='adb reboot bootloader && export ANDROID_PRODUCT_OUT=./ && fastboot flashall'
+    alias git_show='git log -p '
+    alias adbver='adb shell getprop | grep ro.semc.version'
+    alias bashrc='sudo subl ~/.bashrc'
 
 fi
 
@@ -168,7 +171,7 @@ function code_help {
 }
 
 
-function git_help_branch {
+function _git_help_branch {
 	echo    "$ git branch -a"
 	echo    "$ repo start Black_Monster2 --all origin/ZQL1818_INFINIX"
     echo    "$ git add .            （将当前目录下所有修改过的文件添加至索引库中）"
@@ -247,7 +250,7 @@ function github_help {
 }
 
 
-function git_help_log {
+function _git_help_log {
 	echo	"commit失败：
 	git reset --hard cd7814c8b0a14c4d346a128a9ac1558f43d129fb   返回某个节点
 	git pull --rebase   修改不变更新
@@ -282,3 +285,37 @@ function git_help_log {
 	git checkout -- file add之前还原文件
 	git reset HEAD^	回退到最新的上一笔"
 }
+
+function _git_help_diff {
+	echo	"Git diff branch1 branch2 --stat   显示出所有有差异的文件列表"
+	echo	"Git diff branch1 branch2 文件名(带路径)   显示指定文件的详细差异"
+	echo	"Git diff branch1 branch2                   显示出所有有差异的文件的详细差异"
+}
+
+function git_help {
+    clear
+    echo    "(1)git_help_branch
+(2)git_help_diff
+(3)git_help_log"
+    read git_help_number
+    case $git_help_number in
+        1)
+            _git_help_branch
+            ;;
+        2)
+            _git_help_diff  
+            ;;
+        3)
+            _git_help_log
+            ;;
+    esac
+}
+
+
+function ccc {
+	cd /home/ubuntu/file/Code
+	NUMBER=`ls -l |grep "^d"|wc -l`
+
+	echo $NUMBER
+
+} 
