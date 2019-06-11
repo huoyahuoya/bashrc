@@ -83,10 +83,11 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
     alias adbs='adb logcat -b system'
-    alias adbd='adb devices'
-    alias adbrrs='adb root;adb remount;adb shell'
-    alias add51='lsusb;sudo subl /etc/udev/rules.d/51-android.rules'
-    alias findn='find -name'
+    alias d='adb devices'
+    alias rr='adb root;adb remount'
+    alias rrs='adb root;adb remount;adb shell'
+    alias 51='lsusb;sudo subl /etc/udev/rules.d/51-android.rules'
+    alias fn='find -iname'
     alias mycode='nautilus /home/ubuntu/file/My_Code/'
     alias code='cd /home/ubuntu/file/Code/'
     alias tool='nautilus /home/ubuntu/file/Tools/'
@@ -95,17 +96,27 @@ if [ -x /usr/bin/dircolors ]; then
     alias dex='sh /home/ubuntu/file/Tools/Decompile/dex2jar-2.0/d2j-dex2jar.sh'
     # alias jd_gui='cd /home/ubuntu/file/Tools/Decompile/jd-gui-0.3.5.linux.i686/;./jd-gui'
     alias apktool='/home/ubuntu/file/Tools/Decompile/apktool'
-    alias adbc='adb shell dumpsys window | grep mCurrentFocus'
-    alias adb_read='adb root;adb disable-verity'
+    # alias c='adb shell dumpsys window | grep mCurrentFocus'
+    alias c='sh /home/ubuntu/桌面/Github/Diy_Tool/c.sh'
+    alias ard='adb root;adb disable-verity'
 
     alias work='. '/home/ubuntu/桌面/My_platform/shell.sh' '
-    alias adba='adb shell am start -n '
-    alias adbp='adb shell pm list packages'
-    alias repo_sync='repo forall -c "git clean -df" && repo forall -c "git checkout" && repo sync -j8'
+    alias am='adb shell am start -n '
+    # alias plm='adb shell pm list packages'
+    alias rs='repo forall -c "pwd && git clean -df && git checkout . && git pull" ; repo sync -j8'
     alias fa='adb reboot bootloader && export ANDROID_PRODUCT_OUT=./ && fastboot flashall'
-    alias git_show='git log -p '
-    alias adbver='adb shell getprop | grep ro.semc.version'
+    alias show='git log -p '
+    # alias adbver='adb shell getprop | grep ro.semc.version'
+    alias getp='adb shell getprop | grep '
     alias bashrc='sudo subl ~/.bashrc'
+    alias mem='cat /proc/meminfo  | grep MemFree'
+    alias gc='git checkout .'
+    alias gp='git pull'
+    alias gd='git clean -df'
+    alias aa='aapt dump badging'
+    alias ylog='chmod 777 ./analyzer.py && ./analyzer.py'
+    alias sign='jarsigner -verify -verbose -certs  '
+    alias plm='sh /home/ubuntu/桌面/Github/Diy_Tool/package.sh  '
 
 fi
 
@@ -141,18 +152,18 @@ if ! shopt -oq posix; then
   fi
 fi
 
-function grepw {
+function gw {
 	grep -i "$1" * -nr
 }
 
-function grepw2 {
+function gw2 {
 	echo	"find -name '*.php'|xargs grep 'include'//在当前目录及其子目录的php文件中查找include字符串"
 	read NAME
 	find -name "$1"|xargs grep "$2"
 }
 
 
-function adbpid {
+function pid {
     adb logcat --pid="$1"
 }
 
@@ -193,24 +204,15 @@ function seLinux {
 
 
 #查找文件夹
-function find_dir {
+function fdir {
 	sudo find ./  -name "$1" -type d
 }
 
 
 
 export REPO_URL='https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/'
-#查找文件夹
-function find_dir {
-	sudo find ./  -name "$1" -type d
-}
-#查找文件夹
-function find_dir {
-	sudo find ./  -name "$1" -type d
-}
 
-
-function github_help {
+function gh {
     echo    "
     查看分支：git branch
 
@@ -290,9 +292,10 @@ function _git_help_diff {
 	echo	"Git diff branch1 branch2 --stat   显示出所有有差异的文件列表"
 	echo	"Git diff branch1 branch2 文件名(带路径)   显示指定文件的详细差异"
 	echo	"Git diff branch1 branch2                   显示出所有有差异的文件的详细差异"
+	echo	"git diff --binary  commit_ID1 -> commit_ID2 >~/modem.diff 包括二进制文件的diff文件(从状态1diff到状态2)"
 }
 
-function git_help {
+function ghelp {
     clear
     echo    "(1)git_help_branch
 (2)git_help_diff
@@ -311,11 +314,4 @@ function git_help {
     esac
 }
 
-
-function ccc {
-	cd /home/ubuntu/file/Code
-	NUMBER=`ls -l |grep "^d"|wc -l`
-
-	echo $NUMBER
-
-} 
+LD_PRELOAD=/opt/sublime_text/libsublime-imfix.so
