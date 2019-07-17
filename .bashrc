@@ -153,7 +153,7 @@ if ! shopt -oq posix; then
 fi
 
 function gw {
-	grep -i "$1" * -nr
+	grep -i -E "$1" * -nr
 }
 
 function gw2 {
@@ -312,6 +312,59 @@ function ghelp {
             _git_help_log
             ;;
     esac
+}
+
+
+function tomcat8_help {
+    echo    "    tomcat8 常用命令
+    sudo service tomcat8 start   启动Tomcat服务
+    sudo service tomcat8 stop    关闭Tomcat服务
+    sudo service tomcat8 status  查看Tomcat服务状态
+    sudo service tomcat8 restart 重启Tomcat服务"
+}
+
+function _skip_the_boot_Guide {
+    # 跳过开机向导
+    adb shell settings put secure user_setup_complete 1
+    adb shell settings put global device_provisioned 1
+    adb reboot
+}
+
+function log_analyse {
+    echo "/home/ubuntu/file/Code/A6_ali/frameworks/base/services/core/java/com/android/server/am/EventLogTags.logtags"
+    echo "/home/ubuntu/file/Code/1628_HTC/frameworks/base/preloaded-classes"
+}
+
+
+function modem_4.9 {
+	sudo rm /usr/bin/gcc
+	sudo rm /usr/bin/gcc-ar
+	sudo rm /usr/bin/gcc-nm
+	sudo rm /usr/bin/gcc-ranlib
+	sudo ln -s gcc-4.9 gcc
+	sudo ln -s gcc-ar-4.9 gcc-ar
+	sudo ln -s gcc-nm-4.9 gcc-nm
+	sudo ln -s gcc-ranlib-4.9 gcc-ranlib
+
+}
+
+
+function modem_5 {
+	sudo rm /usr/bin/gcc
+	sudo rm /usr/bin/gcc-ar
+	sudo rm /usr/bin/gcc-nm
+	sudo rm /usr/bin/gcc-ranlib
+	sudo ln -s gcc-5 gcc
+	sudo ln -s gcc-ar-5 gcc-ar
+	sudo ln -s gcc-nm-5 gcc-nm
+	sudo ln -s gcc-ranlib-5 gcc-ranlib
+	
+}
+
+function modem_help {
+    sudo apt install libswitch-perl
+    sudo apt install libfile-copy-recursive-perl
+    sudo apt install libxml-simple-perl
 }
 
 LD_PRELOAD=/opt/sublime_text/libsublime-imfix.so
