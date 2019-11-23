@@ -367,4 +367,16 @@ function modem_help {
     sudo apt install libxml-simple-perl
 }
 
+
+function modem_code	{
+	rm `find -name DbgInfo_DSP*`
+	rm `find -name *.EDB*`
+}
+
+function temp_modem {
+    cd src/mcu/temp_modem
+    cp single_bin_modem.bin md1img.img
+    zip -r md1img.zip md1img.img
+}
+
 LD_PRELOAD=/opt/sublime_text/libsublime-imfix.so
